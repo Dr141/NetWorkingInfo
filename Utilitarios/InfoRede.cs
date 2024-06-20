@@ -60,11 +60,20 @@ namespace NetWorkingInfo.Utilitarios
 
         public void ImprimirResultado()
         {
+            Console.WriteLine();
+            Console.WriteLine("-----------------------------------");
             Console.WriteLine("Endereços ips encontrados:");
             foreach (string address in RedeList)
             {
-                Console.WriteLine($"{address}");
+                try
+                {
+                    IPHostEntry host = Dns.GetHostEntry(address);
+                    Console.WriteLine("IP: {0}; Nome do host: {1}", address, host.HostName);
+                }
+                catch { Console.WriteLine("IP: {0}; Nome do host não encontrado", address); }
             }
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine();
         }
     }
 }
