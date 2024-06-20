@@ -23,4 +23,4 @@ if(int.TryParse(resultado, out index))
         }
     }    
 }
-Console.ReadLine();
+Console.ReadKey();
